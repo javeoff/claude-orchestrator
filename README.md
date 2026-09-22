@@ -31,12 +31,13 @@ Statuses: `queued → running → needs_input → done | failed`.
 | `MCP_AUTH_TOKEN` | Secret for MCP clients: `Authorization: Bearer …` or `/mcp?key=…` |
 | `REDIS_URL` | Redis for task state. Without it, state is in memory (fine for local dev, not for production) |
 | `REDIS_PREFIX` | Key prefix, default `orch:` |
+| `OAUTH_SECRET` | Optional HMAC secret for OAuth clients and tokens, defaults to `MCP_AUTH_TOKEN`. Changing it (or the default) signs everyone out |
 | `REPORT_SECRET` | Optional HMAC secret for report URLs, defaults to `MCP_AUTH_TOKEN` |
 | `PUBLIC_BASE_URL` | Optional public origin for report URLs, detected from the request by default |
 
 ## Connecting
 
-- Claude.ai / Claude Desktop custom connector: `https://<deployment>/mcp?key=<MCP_AUTH_TOKEN>`
+- Claude.ai / Claude Desktop custom connector: URL `https://<deployment>/mcp`, no Client ID. Claude registers itself through OAuth and opens a sign-in page where you enter `MCP_AUTH_TOKEN` once. Or use `https://<deployment>/mcp?key=<MCP_AUTH_TOKEN>`, which needs no sign-in.
 - Claude Code: `claude mcp add --transport http orchestrator https://<deployment>/mcp --header "Authorization: Bearer <MCP_AUTH_TOKEN>"`
 
 ## Routine setup
