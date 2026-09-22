@@ -1,0 +1,14 @@
+{
+  "name": "claude-orchestrator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Remote MCP server that runs tasks on a Claude Code cloud routine and tracks their progress",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "redis": "^4.7.0"
+  }
+}

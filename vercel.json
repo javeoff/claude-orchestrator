@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/mcp", "destination": "/api/mcp" },
+    { "source": "/report/:task", "destination": "/api/report?task=:task" },
+    { "source": "/", "destination": "/api/index" }
+  ],
+  "functions": {
+    "api/mcp.js": { "maxDuration": 60 }
+  }
+}
