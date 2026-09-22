@@ -48,8 +48,8 @@ async function handleMessage(msg, ctx) {
 
 export async function POST(request) {
   if (!checkMcpAuth(request)) {
-    return json(rpcError(null, -32001, 'Unauthorized: pass MCP_AUTH_TOKEN as Bearer token or ?key='), 401, {
-      'WWW-Authenticate': 'Bearer',
+    return json(rpcError(null, -32001, 'Unauthorized: sign in via OAuth, or pass MCP_AUTH_TOKEN as Bearer token or ?key='), 401, {
+      'WWW-Authenticate': `Bearer resource_metadata="${baseUrl(request)}/.well-known/oauth-protected-resource"`,
     });
   }
   let body;

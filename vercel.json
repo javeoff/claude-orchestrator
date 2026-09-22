@@ -3,6 +3,13 @@
   "rewrites": [
     { "source": "/mcp", "destination": "/api/mcp" },
     { "source": "/report/:task", "destination": "/api/report?task=:task" },
+    { "source": "/.well-known/oauth-protected-resource/:path*", "destination": "/api/oauth?op=resource" },
+    { "source": "/.well-known/oauth-protected-resource", "destination": "/api/oauth?op=resource" },
+    { "source": "/.well-known/oauth-authorization-server/:path*", "destination": "/api/oauth?op=metadata" },
+    { "source": "/.well-known/oauth-authorization-server", "destination": "/api/oauth?op=metadata" },
+    { "source": "/.well-known/openid-configuration", "destination": "/api/oauth?op=metadata" },
+    { "source": "/oauth/:op(register|authorize|token)", "destination": "/api/oauth?op=:op" },
+    { "source": "/:op(register|authorize|token)", "destination": "/api/oauth?op=:op" },
     { "source": "/", "destination": "/api/index" }
   ],
   "functions": {
